@@ -1,4 +1,5 @@
 $(function () {
+    let  cartArrProId=[];
     let url='https://afternoon-falls-30227.herokuapp.com/api/v1/products/';
     $("#show").click(function () {
         $.getJSON(url, function (data) {
@@ -28,7 +29,6 @@ $(function () {
                 //    "</td><td>" + element['DimUnit']+
                    "</td></tr>"
                 );
-           
             // console.log('status: ' + data['status']);
             // console.log('error: ' + data['error']);
             // console.log('page: ' + data['page']);
@@ -37,10 +37,21 @@ $(function () {
             // console.log('total_pages: ' + data['total_pages'])
         });
 
+        // $("button").click((ev) => {
+        //         console.log(ev.target.value);  
+        //         window.location.href = "cart.html?"+ev.target.value;     
+        //     });
         $("button").click((ev) => {
-                console.log(ev.target.value);  
-                window.location.href = "cart.html?"+ev.target.value;     
-            });
+            // send array of prodecuctid 
+            cartArrProId.unshift(ev.target.value); 
+
+      
+        });
+        $("#cartpage").click((ev)=>{
+            // console.log(cartArrProId); 
+            window.sessionStorage.setItem("productsId", JSON.stringify(cartArrProId));
+            
+        });
     });
 });
 
