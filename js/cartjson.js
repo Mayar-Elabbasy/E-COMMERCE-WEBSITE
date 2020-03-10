@@ -5,12 +5,14 @@ $(function () {
     });
 
     var ProductId = JSON.parse(sessionStorage.getItem("productsId")); 
+    console.log(ProductId);
     var i;
+    var allItmes=[];
     for (i = 0; i < ProductId.length; i++) {
         if (ProductId[i] == null) {
             continue;
         }
-
+        var allItmes=[];
         const url = 'https://afternoon-falls-30227.herokuapp.com/api/v1/products/' + ProductId[i];
 
         if (sessionStorage.getItem(ProductId[i]) == null) {
@@ -19,17 +21,24 @@ $(function () {
         }
         var element;
         var totalPrice = 0;
+   
         var quantity;
         $.getJSON(url, function (data) {
             element = data.data;
             quantity = parseInt(sessionStorage.getItem(element['ProductId']));
             totalPrice = element['Price'] * quantity;
+            
             currencyCode = element['CurrencyCode']
             if (element['CurrencyCode'] == 'EUR') {
                 // unicode for eur
                 CurrencyCode = "\u20AC"
             }
-            //             
+            // this array send to save indexDB             
+            allItmes.push(element['Name']);
+            allItmes.push(quantity);
+            allItmes.push(totalPrice);
+            allItmes.push("/");
+            // EndArray
             $("tbody").append(
                 "<tr>" +
                 "<td class='cart-pic first-row'><img src='" + element['ProductPicUrl'] + "' alt=''/></td>" +
@@ -81,7 +90,10 @@ $(function () {
         });
     });
     $("#save").click((ev) => {
-        StoreDate(totalPrice, quantity, currencyCode);
+        // allItmes.push();
+    // console.log(allItmes);
+
+        StoreDate(allItmes);
     });
     $("#history").click((ev) => {
         orderHistory();

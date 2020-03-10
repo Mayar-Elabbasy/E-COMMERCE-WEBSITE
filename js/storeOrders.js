@@ -16,7 +16,8 @@ function indexDB() {
         let createTable = db.createObjectStore(DB_TABLE_Name, {
             keyPath: 'order',
             autoIncrement: true
-        })
+        });
+        dateIndex = booksStore.createIndex("Date", "Date", { unique: false });
     };
     request.onsuccess = function (ev) {
         db = ev.target.result;
@@ -28,19 +29,27 @@ function indexDB() {
 
     };
 }
-function StoreDate(totalPrice,Npices,currencyCode){
-    if (db instanceof IDBDatabase) {
-        const store = db.transaction(DB_TABLE_Name, 'readwrite');
-        const tran = store.objectStore(DB_TABLE_Name);
-        tran.add({
-            Date: orderDate.toLocaleDateString("en-US", dateFormate),
-            CurrencyCode:currencyCode,
-            TotalPrice:totalPrice ,
-            Item :Npices,
-        });
-    }
+function StoreDate(allItmes){
+    console.log("items");
+    
+    console.log(allItmes);
+    
+    // if (db instanceof IDBDatabase) {
+    //     const store = db.transaction(DB_TABLE_Name, 'readwrite');
+    //     const tran = store.objectStore(DB_TABLE_Name);
+    //     tran.add({
+    //         Date: orderDate.toLocaleDateString("en-US", dateFormate),
+    //         CurrencyCode:currencyCode,
+    //         TotalPrice:totalPrice ,
+    //         Item :Npices,
+    //     });
+    // }
 }
 function orderHistory() {
+    // const tran = booksStore.index('Date');
+    //     tran.getAll().onsuccess = (ev) => {
+    //         console.log(ev.target.result);
+    //     }
     if (db instanceof IDBDatabase) {
         const store = db.transaction(DB_TABLE_Name, 'readwrite');
         const tran = store.objectStore(DB_TABLE_Name);

@@ -43,12 +43,19 @@ $(function () {
         //     });
         $("button").click((ev) => {
             // send array of prodecuctid 
-            cartArrProId.unshift(ev.target.value); 
-
-      
+            // first click to add 
+            // second one to remove from
+           if(!cartArrProId.includes(ev.target.value)){
+               cartArrProId.unshift(ev.target.value); 
+           }else{
+               let len=cartArrProId.length;
+            for( var i = 0; i < len; i++)
+                { if ( cartArrProId[i] === ev.target.value) 
+                    { cartArrProId.splice(i, 1); }
+                }
+           }
         });
         $("#cartpage").click((ev)=>{
-            // console.log(cartArrProId); 
             window.sessionStorage.setItem("productsId", JSON.stringify(cartArrProId));
             
         });
