@@ -30,20 +30,19 @@ function indexDB() {
     };
 }
 function StoreDate(allItmes){
-    console.log("items");
+    // console.log("items");
     
-    console.log(allItmes);
-    
-    // if (db instanceof IDBDatabase) {
-    //     const store = db.transaction(DB_TABLE_Name, 'readwrite');
-    //     const tran = store.objectStore(DB_TABLE_Name);
-    //     tran.add({
-    //         Date: orderDate.toLocaleDateString("en-US", dateFormate),
-    //         CurrencyCode:currencyCode,
-    //         TotalPrice:totalPrice ,
-    //         Item :Npices,
-    //     });
-    // }
+    // console.log(allItmes);    
+    if (db instanceof IDBDatabase) {
+        const store = db.transaction(DB_TABLE_Name, 'readwrite');
+        const tran = store.objectStore(DB_TABLE_Name);
+        tran.add({
+            Date: orderDate.toLocaleDateString("en-US", dateFormate),
+            CurrencyCode:currencyCode,
+            TotalPrice:totalPrice ,
+            Item :Npices,
+        });
+    }
 }
 function orderHistory() {
     // const tran = booksStore.index('Date');
