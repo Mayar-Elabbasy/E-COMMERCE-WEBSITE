@@ -1,0 +1,195 @@
+
+.printersCategory{
+  background-color:white;
+  color: navy;
+}
+
+.flatScreenMonitorsCategory{
+  background-color:lightpink;
+  color: purple;
+  }
+
+.laptopsCategory{
+  background-color:black;
+  color: white;
+}
+
+.accessoriesCategory{
+  background-color:red;
+  color: white;
+}
+
+.multifunctionPrintersCategory{
+  background-color:yellow;
+  color: black;
+}
+
+.miceCategory{
+  background-color:green;
+  color: white;
+}
+
+.keyboardsCategory{
+  background-color:brown;
+  color: white;
+}
+
+.mousepadsCategory{
+  background-color:tomato;
+  color: white;
+}
+
+.computerSystemAccessoriesCategory{
+  background-color:burlywood;
+  color: black;
+}
+
+.graphicCardsCategory{
+  background-color:fuchsia;
+  color: black;
+}
+
+.scannersCategory{
+  background-color:darkorange;
+  color: white;
+}
+
+.speakersCategory{
+  background-color:royalblue;
+  color: white;
+}
+
+.softwareCategory{
+  background-color:darkgray;
+  color: black;
+}
+
+.telecommunicationsCategory{
+  background-color:wheat;
+  color: black;
+}
+
+.pcsCategory{
+  background-color:lightgreen;
+  color: black;
+}
+
+.serversCategory{
+  background-color:olive;
+  color: black;
+}
+
+.flatScreenTVsCategory{
+  background-color:firebrick;
+  color: white;
+}
+
+.desktopComputersCategory{
+  background-color:darkviolet;
+  color: white;
+}
+
+.tabletsCategory{
+  background-color:lime;
+  color: black;
+}
+
+.smartphonesandTabletsCategory{
+  background-color:lightcoral;
+  color: black;
+}
+
+.flatScreensCategory{
+  background-color:khaki;
+  color: black;
+}
+.paginationColor{
+  background-color: black;
+}
+
+.lowPrice{
+  background-color: lightgray;
+  font-family: 'Acme', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 20px;
+  color: navy;
+}
+
+.dropdown-menu { 
+  background-color: transparent !important;
+  border: 0px !important;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 10rem;
+  padding: .5rem 0;
+  margin: .125rem 0 0;
+  font-size: 1rem;
+  color: #212529;
+  text-align: left;
+  list-style: none;
+  background-clip: padding-box;
+}
+.header {
+
+  background-image: url(https://tinyjpg.com/images/social/website.jpg);
+}
+
+li a{
+  font-weight: bold;
+  font-size: 20px;
+  font-family: 'Acme', sans-serif;
+}
+
+.navbar-brand{
+  font-weight: bold;
+  font-size: 25px;
+  font-family: 'Acme', sans-serif;
+}
+
+#products{
+  background-color:beige;
+  border-radius: 20px;  
+}
+
+.productName{
+ background-color: white;
+ border: 1px;
+ border-radius: 20px;
+ font-size: 25px;
+}
+
+.navbar {
+  background-color: black;
+}
+
+.navbar a {
+  float: left;
+  text-align: center;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background-color: gray;
+  border-radius: 20px;
+}
+
+.active {
+  background-color: red;
+  border-radius: 20px;
+  color: black;
+}
+
+/* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+} */
