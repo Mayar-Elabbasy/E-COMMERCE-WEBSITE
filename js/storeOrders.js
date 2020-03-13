@@ -1,6 +1,6 @@
 const DB_NAME = "electronicStore";
 const DB_TABLE_Name = "electronic";
-const DB_VERSION=1;
+const DB_VERSION=2;
 var db;
 let dateFormate = { year: 'numeric', month: 'long', day: 'numeric' };
 let orderDate  = new Date();
