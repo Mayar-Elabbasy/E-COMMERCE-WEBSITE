@@ -1,4 +1,5 @@
 $(function () {
+  let  cartArrProId=[];
   var page = 1,
     limit = 10,
     totatItems = 0;
@@ -133,13 +134,8 @@ $(function () {
       }
     });
   }
-  $(".lowPrice").on('click','#addCart',((ev) => {
-    console.log("cartButton");
-    
-    //  id=addCart
-    // send array of prodecuctid 
-    // first click to add 
-    // second one to remove from
+
+    $('#products').on('click', '#addCart', (ev)=>{
     if (!cartArrProId.includes(ev.target.value)) {
       cartArrProId.unshift(ev.target.value);
     } else {
@@ -148,9 +144,9 @@ $(function () {
         if (cartArrProId[i] === ev.target.value) { cartArrProId.splice(i, 1); }
       }
     }
-  }));
+  });
+  
   $("#cartpage").click((ev) => {
-    console.log("cartpage");
     window.sessionStorage.setItem("productsId", JSON.stringify(cartArrProId));
 
   });
