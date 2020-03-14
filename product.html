@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+</head>
+<body class="goto-here">
+	
+	
+						</div>
+					</li>
+					<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+					<li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+					
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- END nav -->
+
+	<div class="hero-wrap hero-bread" style="background-image: url('img/bg_6.jpg');">
+		<div class="container">
+			<div class="row no-gutters slider-text align-items-center justify-content-center">
+				<div class="col-md-9 ftco-animate text-center">
+					<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="index.html">Product</a></span> <span>Product Single</span></p>
+					<h1 class="mb-0 bread">Product Single</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+     <h2 id="error" class="container-fluid" style="width: 400px; height: 400px; margin-top:100px; text-align: center;"></h2>
+	<section class="ftco-section" id="section">
+		<div class="container">
+			<div class="row">
+               
+				<div class="col-lg-4 mb-5 ftco-animate">
+					<img src="" id="product-img" class="img-fluid">
+				</div>
+				<div class="col-lg-4 product-details pl-md-5 ftco-animate">
+					<h3 id="name"></h3>
+                    
+					<p class="price"><span  style="font-size: 30px;" id="prices"></span></p>
+                    	<span style="color: green;font-size: 15px;">Descrip:</span><p id="description"></p>
+					
+                    
+					
+                    <span style="color: green;font-size: 15px;">Category:</span><p id="Category"></p>
+                    
+                    
+                   
+                    <span style="color: green;font-size: 15px;">SupplierName:</span> <p id="SupplierName"></p>
+                    
+                    <span style="color: green;font-size: 15px;">Weight:</span><p id="WeightMeasure"></p> 
+                     <span style="color: green;font-size: 15px;">Volume:</span><p><span id="Volume"></span><sup>3</sup></p>
+                    </div>
+                <div class="col-lg-4 product-details pl-md-5 ftco-animate">
+                           
+                   
+                 
+                    				<div class="row mt-4">
+						<div class="col-md-6">
+							<div class="form-group d-flex">
+								<div class="select-wrap"></div>
+							</div>
+						</div>
+						<div class="w-100"></div>
+						<div class="input-group col-md-6 d-flex mb-3">
+							<span class="input-group-btn mr-2">
+								<button type="button" class="quantity-left-minus btn" data-type="minus" data-field="">
+									<i class="ion-ios-remove"></i>
+								</button>
+							</span>
+							<input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+							<span class="input-group-btn ml-2">
+								<button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
+									<i class="ion-ios-add"></i>
+								</button>
+							</span>
+						</div>
+						
+					</div>
+                    <div style="margin-left: 40px;">
+                     <span style="color: green;font-size: 15px;"> Status:</span><p id="Status"></p> 
+                    
+                     <span style="color: green;font-size: 15px;">Quantity:</span><p id="Quantity"></p>
+                        </div>
+				
+                </div>
+			</div>
+		</div>
+	</section>
+	
+	<footer class="ftco-footer bg-light ftco-section">
+		<div class="container">
+			<div class="row">
+				<div class="mouse">
+					<a href="#" class="mouse-icon">
+						<div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+					</a>
+				</div>
+			</div>
+			<div class="row mb-5">
+				<div class="col-md-8">
+					<div class="ftco-footer-widget mb-4">
+						
+					</div>
+				</div>
+				<div class="col-md-4">
+					
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+				
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- loader -->
+	<div id="ftco-loader" class="show fullscreen">
+	
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="product.js"></script>
+	<script>
+		$(document).ready(function() {
+			var quantitiy = 0;
+			$('.quantity-right-plus').click(function(e) {
+				e.preventDefault();
+				var quantity = parseInt($('#quantity').val());
+				$('#quantity').val(quantity + 1);
+			});
+			$('.quantity-left-minus').click(function(e) {
+				e.preventDefault();
+				var quantity = parseInt($('#quantity').val());
+				if (quantity > 0) {
+					$('#quantity').val(quantity - 1);
+				}
+			});
+		});
+	</script>
+	
+</body>
+</html>
