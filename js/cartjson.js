@@ -110,14 +110,14 @@ $(function () {
         // getAllProductPrice();
         StoreDate(allItmes);
     });
-    /*-------------------OrderHistoryButton---------------------------*/
-    $("#history").click((ev) => {
-        orderHistory();
-    });
-    /*-------------------DeleteOrderHistoryButton---------------------*/
-    $("#delhistory").click((ev) => {
-        delAllOrderHistory();
-    });
+    // /*-------------------OrderHistoryButton---------------------------*/
+    // $("#history").click((ev) => {
+    //     orderHistory();
+    // });
+    // /*-------------------DeleteOrderHistoryButton---------------------*/
+    // $("#delhistory").click((ev) => {
+    //     delAllOrderHistory();
+    // });
     /*-------------------FUnctionToReloadPage------------------------*/
     function reloadFun(){
          // setTimeout(function() { console.log("reload");

@@ -63,6 +63,7 @@ function StoreDate(allItmes){
     }
 }
 // /***************************** */
+openDb();
 function openDb(){
     console.log("opened");
     
@@ -73,38 +74,47 @@ function openDb(){
         const tran = store.objectStore(DB_TABLE_Name);
     };
 }
-// function orderHistory() {
-//     console.log("orderHistory");
+setTimeout(function orderHistory() {
+    if (db instanceof IDBDatabase) {
+        console.log("orderHistory");
+        const store = db.transaction(DB_TABLE_Name, 'readwrite');
+        const tran = store.objectStore(DB_TABLE_Name)
+        tran.getAll().onsuccess = (ev) => {
+            ev.target.result.forEach(element => {
+                allItems=element['Item']
+                items=[];
+                items = allItems.split(",");
+                totalQuantity=element['TotalNoOfItems']
+                totalprice=element['TotalPrice']  
+                  $('#orders_details').append(
+                    "<tr style='height:50px;'>" +
 
-//     if (db instanceof IDBDatabase) {
-//         console.log("function")
-//         const store = db.transaction(DB_TABLE_Name, 'readwrite');
-//         const tran = store.objectStore(DB_TABLE_Name);
-//         let table = document.getElementById("table");
-//         tran.getAll().onsuccess = (ev) => {
-//             ev.target.result.forEach(element => {
-             
-//         });
-//         };
-
-
-//     }
-//}
-// function delAllOrderHistory(){
-//     if (db instanceof IDBDatabase) {
-//         const store = db.transaction(DB_TABLE_Name, 'readwrite');
-//         const tran = store.objectStore(DB_TABLE_Name);
-//        tran.clear();
-//        $.ajax({
-//         url:'', 
-//         success: function(result){
-//             location.reload(false);
-//                      },
-//                    error: function(){
-//                        console.log("error");
+                "<td style='width:30px;'>" + element['order'] + "</td>" +
+                "<td>" + element['Date'] + "</td>" +
+                "<td>" + allItems + "</td>" +
+                "<td style='width:30px;text-align: center'>" + totalQuantity + "</td>" +
+                "<td style='width:30px;'>" + totalprice+"$" + "</td>" +
+                "</tr>"
+                  );
+        });
+        };
+    }
+},300);
+function delAllOrderHistory(){
+    if (db instanceof IDBDatabase) {
+        const store = db.transaction(DB_TABLE_Name, 'readwrite');
+        const tran = store.objectStore(DB_TABLE_Name);
+       tran.clear();
+       $.ajax({
+        url:'', 
+        success: function(result){
+            location.reload(false);
+                     },
+                   error: function(){
+                       console.log("error");
                        
-//                    }
-//                   });
-//     }
+                   }
+                  });
+    }
 
-// }
+}
