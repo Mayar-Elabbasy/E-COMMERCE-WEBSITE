@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Order History</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="css/style.css" type="text/css" />
+        <script src="js/storeOrders.js"></script>
+</head>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    openDb();
+// var db;
+// const DB_NAME = "electronicStore";
+// const DB_TABLE_Name = "electronic";
+// const DB_VERSION=2;
+// function openDb(){
+//     console.log("opened");
+    
+//     const request = indexedDB.open(DB_NAME, DB_VERSION);
+//     request.onsuccess = function (ev) {
+//         db = ev.target.result;
+//         const store = db.transaction(DB_TABLE_Name, 'readwrite'); 
+//         const tran = store.objectStore(DB_TABLE_Name);
+//     };
+// }
+setTimeout(function orderHistory() {
+    if (db instanceof IDBDatabase) {
+        console.log("orderHistory");
+        const store = db.transaction(DB_TABLE_Name, 'readwrite');
+        const tran = store.objectStore(DB_TABLE_Name)
+        tran.getAll().onsuccess = (ev) => {
+            ev.target.result.forEach(element => {
+                allItems=element['Item']
+                items=[];
+                items = allItems.split(",");
+                totalQuantity=element['TotalNoOfItems']
+                totalprice=element['TotalPrice']  
+                  $('#orders_details').append(
+                    "<tr style='height:50px;'>" +
+
+                "<td style='width:30px;'>" + element['order'] + "</td>" +
+                "<td>" + element['Date'] + "</td>" +
+                "<td>" + allItems + "</td>" +
+                "<td style='width:30px;text-align: center'>" + totalQuantity + "</td>" +
+                "<td style='width:30px;'>" + totalprice+"$" + "</td>" +
+                "</tr>"
+                  );
+        });
+        };
+    }
+},300);
+function delAllOrderHistory(){
+    if (db instanceof IDBDatabase) {
+        const store = db.transaction(DB_TABLE_Name, 'readwrite');
+        const tran = store.objectStore(DB_TABLE_Name);
+       tran.clear();
+       $.ajax({
+        url:'', 
+        success: function(result){
+            location.reload(false);
+                     },
+                   error: function(){
+                       console.log("error");
+                       
+                   }
+                  });
+    }
+
+}
+openDb();
+</script>
+<body>
+    <!-- Header Section Begin -->
+    <!-- <header class="header-section">
+    </header> -->
+    <!-- Header End -->
+
+    <!-- Breadcrumb Section Begin -->
+    <div class="breacrumb-section">
+        <div class="container">
+            <!-- <script >
+             orderHistory();
+            </script> -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text product-more">
+                        <a href="./json.html"><i class="fa fa-shopping-cart"></i> home</a>
+                        <a href="./cart.html"><i class="fa fa-shopping-cart"></i> Cart</a>
+                        <a href="./Orderhistory.html"><i class="fa fa-file-text-o"></i> Orderhistory*</a>
+                        <a href="./contact.html"><i class="fa fa-file-text-o"></i> Contact US</a>
+                        <a href="./aboutus.html"><i class="fa fa-file-text-o"></i> About US</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <a href="#" id="history" class="proceed-btn">View History</a> -->
+    <!-- Breadcrumb Section Begin -->
+    <!-- Shopping Cart Section Begin -->
+    <section class="shopping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-8 col-lg-12 pb-5">
+                    <div class="orders-table">
+                        <table id="orders_details" class="table table-striped">
+                            <th>Orders</th>
+                            <!-- orders will appears here -->
+                            <!-- <th>Here</th> -->
+                        </table>
+                       
+                    </div>
+                    <button class="btn btn-light" onclick="delAllOrderHistory()">Clear</button>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <!-- Shopping Cart Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer-section">
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <!-- <script src="js/jquery-3.3.1.min.js"></script> -->
+    <!-- <script src="js/cartjson.js"></script> -->
+    <!-- <script src="js/indexed.js"></script> -->
+    <script>
+    </script>
+</body>
+
+</html>

@@ -12,12 +12,14 @@ if ('indexedDB' in window) {
 function indexDB() {
     const request = indexedDB.open(DB_NAME, DB_VERSION);
     request.onupgradeneeded = function (ev) {
+        console.log("upgrade");
+        
          db = ev.target.result;
-        let createTable = db.createObjectStore(DB_TABLE_Name, {
+        let createTable = db.createObjectStore(DB_TABLE_Name,{
             keyPath: 'order',
             autoIncrement: true
         });
-        dateIndex = booksStore.createIndex("Date", "Date", { unique: false });
+        dateIndex = createTable.createIndex("Date", "Date", { unique: false });
     };
     request.onsuccess = function (ev) {
         db = ev.target.result;
@@ -30,56 +32,79 @@ function indexDB() {
     };
 }
 function StoreDate(allItmes){
-    // console.log("items");
-    
-    // console.log(allItmes);    
+   // console.log("items");
+    itemsInOne=[];
+    len=allItmes.length;
+    let i;
+    let j=0;
+    let totalPr=0;
+    let totalItems=0;
+    for(i=0;i<len;i=i+3){
+      Str=+" "+allItmes[i]+" : "+allItmes[i+1]+" item : "+allItmes[i+2]+"$";
+      //console.log(Str);
+      totalPr+=allItmes[i+2];
+      totalItems+=allItmes[i+1];
+      itemsInOne[j]=Str;
+    //  console.log(itemsInOne[j]);
+      j++;
+    }
+    desc=itemsInOne.toString();
+    //console.log(desc);
     if (db instanceof IDBDatabase) {
         const store = db.transaction(DB_TABLE_Name, 'readwrite');
         const tran = store.objectStore(DB_TABLE_Name);
+        //let i;
         tran.add({
             Date: orderDate.toLocaleDateString("en-US", dateFormate),
-            CurrencyCode:currencyCode,
-            TotalPrice:totalPrice ,
-            Item :Npices,
+            Item:desc,
+            TotalPrice:totalPr,
+            TotalNoOfItems:totalItems,
         });
     }
 }
-function orderHistory() {
-    // const tran = booksStore.index('Date');
-    //     tran.getAll().onsuccess = (ev) => {
-    //         console.log(ev.target.result);
-    //     }
-    if (db instanceof IDBDatabase) {
-        const store = db.transaction(DB_TABLE_Name, 'readwrite');
+// /***************************** */
+function openDb(){
+    console.log("opened");
+    
+    const request = indexedDB.open(DB_NAME, DB_VERSION);
+    request.onsuccess = function (ev) {
+        db = ev.target.result;
+        const store = db.transaction(DB_TABLE_Name, 'readwrite'); 
         const tran = store.objectStore(DB_TABLE_Name);
-        let table = document.getElementById("table");
-        tran.getAll().onsuccess = (ev) => {
-            ev.target.result.forEach(element => {
-                if (element['CurrencyCode']=='EUR') {
-                    // unicode for eur
-                    CurrencyCode="\u20AC"
-                }
-                table.innerText+="#"+element['order']+" "+element['Date']+" "+CurrencyCode+element['TotalPrice']+"for "+element['Item']+"item \n";
-        });
-        };
+    };
+}
+// function orderHistory() {
+//     console.log("orderHistory");
 
-    }
-}
-function delAllOrderHistory(){
-    if (db instanceof IDBDatabase) {
-        const store = db.transaction(DB_TABLE_Name, 'readwrite');
-        const tran = store.objectStore(DB_TABLE_Name);
-       tran.clear();
-       $.ajax({
-        url:'', 
-        success: function(result){
-            location.reload(false);
-                     },
-                   error: function(){
-                       console.log("error");
+//     if (db instanceof IDBDatabase) {
+//         console.log("function")
+//         const store = db.transaction(DB_TABLE_Name, 'readwrite');
+//         const tran = store.objectStore(DB_TABLE_Name);
+//         let table = document.getElementById("table");
+//         tran.getAll().onsuccess = (ev) => {
+//             ev.target.result.forEach(element => {
+             
+//         });
+//         };
+
+
+//     }
+//}
+// function delAllOrderHistory(){
+//     if (db instanceof IDBDatabase) {
+//         const store = db.transaction(DB_TABLE_Name, 'readwrite');
+//         const tran = store.objectStore(DB_TABLE_Name);
+//        tran.clear();
+//        $.ajax({
+//         url:'', 
+//         success: function(result){
+//             location.reload(false);
+//                      },
+//                    error: function(){
+//                        console.log("error");
                        
-                   }
-                  });
-    }
+//                    }
+//                   });
+//     }
 
-}
+// }

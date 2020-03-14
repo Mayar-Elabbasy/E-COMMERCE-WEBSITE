@@ -1,4 +1,5 @@
 $(function () {
+  let  cartArrProId=[];
   var page = 1,
     limit = 10,
     totatItems = 0;
@@ -78,7 +79,9 @@ $(function () {
             //Different Color for each Category
             if (productCategory === 'Printers') {
               $("body").append($("#mainProducts").append($("#products").append("<div class='lowPrice p-5 border border-primary  col-4 text-center'>" + "<span class='p-2 productName border border-primary'><a href='#'>" + productName + "</a></span><br><br>" + "<span class='p-2 border border-primary rounded-pill printersCategory'>" + productCategory + "</span><br><br>" + "<img class='img-fluid img-thumbnail p-2 border border-primary' href='#' src=" + productPic + "><br><br>" + "<span class='p-1 price'>" + productPrice + "  " + productCurrency + "</span><button type='button' id='addCart' value='"+ProductId+"' class='float-right btn btn-primary border border-dark p-2  '>Add To Cart</button></div><br />")));
+              // $("body").append($("#mainProducts").append($("#products").append("<button id='addCart' value="+ProductId+">CArt</button>")));
             } else if (productCategory === 'Flat Screen Monitors') {
+              // $("body").append($("#mainProducts").append($("#products").append("<button  id='addCart' value="+ProductId+">CArt</button>")));
               $("body").append($("#mainProducts").append($("#products").append("<div class='lowPrice p-5  border border-primary col-4 text-center'>" + "<span class='p-2 productName border border-primary'><a href='#'>" + productName + "</a></span><br><br>" + "<span class='p-2 border border-primary rounded-pill flatScreenMonitorsCategory'>" + productCategory + "</span><br><br>" + "<img class='img-fluid  img-thumbnail p-2 border border-primary 'href='#' src=" + productPic + "><br><br>" + "<span class='p-2'>" + productPrice + "  " + productCurrency + "</span><button type='button' id='addCart' value='"+ProductId+"' class='float-right btn btn-primary p-2 border border-dark'>Add To Cart</button></div><br />")));
             }else if (productCategory === 'Laptops') {
               $("body").append($("#mainProducts").append($("#products").append("<div class='lowPrice p-5  border border-primary col-4 text-center'>" + "<span class='p-2 productName border border-primary'><a href='#'>" + productName + "</a></span><br><br>" + "<span class='p-2 border border-primary rounded-pill laptopsCategory'>" + productCategory + "</span><br><br>" + "<img class='img-fluid  img-thumbnail p-2 border border-primary 'href='#' src=" + productPic + "><br><br>" + "<span class='p-2'>" + productPrice + "  " + productCurrency + "</span><button type='button' id='addCart' value='"+ProductId+"' class='float-right btn btn-primary p-2 border border-dark'>Add To Cart</button></div><br />")));
@@ -133,13 +136,8 @@ $(function () {
       }
     });
   }
-  $(".lowPrice").on('click','#addCart',((ev) => {
-    console.log("cartButton");
-    
-    //  id=addCart
-    // send array of prodecuctid 
-    // first click to add 
-    // second one to remove from
+
+    $('#products').on('click', '#addCart', (ev)=>{
     if (!cartArrProId.includes(ev.target.value)) {
       cartArrProId.unshift(ev.target.value);
     } else {
@@ -148,9 +146,9 @@ $(function () {
         if (cartArrProId[i] === ev.target.value) { cartArrProId.splice(i, 1); }
       }
     }
-  }));
+  });
+  
   $("#cartpage").click((ev) => {
-    console.log("cartpage");
     window.sessionStorage.setItem("productsId", JSON.stringify(cartArrProId));
 
   });
