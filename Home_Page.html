@@ -12,10 +12,10 @@
     <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">  
      
 </head>
-<body class="bg-dark">
+<body class="bg-dark" >
     <section id="navbar">
         <nav class="navbar navbar-inverse navbar-expand-lg navbar-dark fixed-top  rounded-bottom border border-white">
-           <a class="navbar-brand sub m-2 p-2 text-white" href="Home_Page.html" >
+           <a class="navbar-brand sub m-2  text-white" href="Home_Page.html" >
             <img src="css/websiteIcon2.png" alt="some text" width=50 height=40> <span>E-COMMERCE WEBSITE</span>
            </a>
            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" >
@@ -32,13 +32,28 @@
                 <li class="nav-item  ">
                 <a href="contact.html" class="text-white"><i class="fa fa-fw fa-envelope "></i> Contact Us</a>
               </li>
+              <li class="nav-item  ">
+                <a href="Orderhistory.html" class="text-white"><i class="fas fa-history"></i> Order History</a>
+              </li>
+              <li class=" nav-item dropdown  p-sm-3 p-md-3 pt-lg-2 ">
+                <a class="nav-link dropdown-toggle text-white fas fa-filter btn btn-outline-dark " href="#" id="nav" role="button" data-toggle="dropdown" >
+                  <span  style="font-weight: bold; font-size: 20px; font-family: 'Acme', sans-serif;" >Filter By Category</span>
+                </a>
+                <div class="dropdown-menu scrollable-menu p-sm-3 p-md-3 pt-lg-2" role="menu" id="filterByCategory" >
+                
+                </div>
+              </li>
+
               <li class=" nav-item dropdown  p-sm-3 p-md-3 pt-lg-2 ">
                 <a class="nav-link dropdown-toggle text-white fas fa-cart-plus btn btn-outline-dark " href="#" id="nav" role="button" data-toggle="dropdown" >
                 </a>
                 <div class="dropdown-menu p-sm-3 p-md-3 pt-lg-2 " >
-                  <a class="dropdown-item text-info bg-white "  id="cartpage" href="cart.html">VIEW</a>
+                  <a class="dropdown-item text-info bg-white rounded-pill "  id="cartpage" href="cart.html">VIEW</a>
                 </div>
               </li>
+             
+            </li>
+           
             </ul>
              <form class="search-form text-white m-2 p-2  bg-transparent  ">
                    <input class="form-control Search bg-transparent text-white mr-sm-2" type="text" placeholder="Search... "  >
@@ -62,15 +77,19 @@
     </div>
 </section>
 
+<section id="mainCategories" class="p-2 m-2">      
+  <div class="container">
+    <div class="row border  border-dark m-5 p-5" id="categories">
+    </div>
+  </div>
+</section>
+
 <section id="pagination" class="p-2 m-2">
       <div class="nav-btn-container text-center m-1 ">
         <div class="row m-3 p-3 paginationButtons justify-content-center">
           <nav aria-label="Page navigation example ">
             <ul class="pagination  m-3 paginationColor">
               <li class="page-item prev-btn btn btn-dark m-1 text-info"><a class="page-link">Previous</a></li>
-              <!-- <li class="page-item btn btn-primary m-1"><a class="page-link" >1</a></li>
-              <li class="page-item btn btn-primary m-1"><a class="page-link">2</a></li>
-              <li class="page-item btn btn-primary m-1"><a class="page-link" ">3</a></li> -->
               <li class="page-item next-btn btn btn-dark m-1 text-info"><a class="page-link" >Next</a></li>
             </ul>
           </nav>
@@ -78,10 +97,26 @@
       </div>
   </section>
 
+  <section id="pagination2" class="p-2 m-2">
+    <div class="nav-btn-container text-center m-1 ">
+      <div class="row m-3 p-3 paginationButtons justify-content-center">
+        <nav aria-label="Page navigation example ">
+          <ul class="pagination  m-3 paginationColor">
+            <li class="page-item prev-btn2 btn btn-dark m-1 text-info"><a class="page-link">Previous</a></li>
+            <li class="page-item next-btn2 btn btn-dark m-1 text-info"><a class="page-link" >Next</a></li>
+           
+          </ul>
+        </nav>
+      </div>
+    </div>
+</section>
+
+
 
 
     
     <script src="js/jquery.min.js"></script>
+    <script src="js/category.js"></script>
     <script src="js/Pagination.js"></script>
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/popper.min.js"></script>
