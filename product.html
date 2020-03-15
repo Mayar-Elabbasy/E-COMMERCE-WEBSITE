@@ -3,119 +3,119 @@
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-COMMERCE WEBSITE</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
+    <link rel="stylesheet" href="css/css_design.css"> 
+    <link rel="icon" type="image/ico" href="css/websiteIcon2.png"/>
+    <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">  	
 </head>
-<body class="goto-here">
-	
-	
-						</div>
-					</li>
-					<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-					<li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-					
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<!-- END nav -->
+<body class="goto-here bg-dark">
 
-	<div class="hero-wrap hero-bread" style="background-image: url('img/bg_6.jpg');">
+	<section id="navbar">
+        <nav class="navbar navbar-inverse navbar-expand-lg navbar-dark fixed-top  rounded-bottom border border-white">
+           <a class="navbar-brand sub m-2  text-white" href="Home_Page.html" >
+            <img src="css/websiteIcon2.png" alt="some text" width=50 height=40> <span>E-COMMERCE WEBSITE</span>
+           </a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" >
+             <span class="navbar-toggler-icon "></span>
+           </button>
+           <div class="collapse navbar-collapse " id="nav">
+            <ul class="navbar-nav mx-auto sub m-2 p-2 ">
+              <li class="nav-item ">
+                  <a class="active" href="Home_Page.html"><i class="fa fa-fw fa-home"></i> Home</a>
+               </li>
+              <li class="nav-item">
+                <a href="aboutus.html" class="text-white"><i class="fas fa-address-card"></i> About</a>
+              </li>
+                <li class="nav-item  ">
+                <a href="contact.html" class="text-white"><i class="fa fa-fw fa-envelope "></i> Contact Us</a>
+              </li>
+              <li class="nav-item  ">
+                <a href="Orderhistory.html" class="text-white"><i class="fas fa-history"></i> Order History</a>
+              </li>
+              <li class=" nav-item dropdown  p-sm-3 p-md-3 pt-lg-2 ">
+                <a class="nav-link dropdown-toggle text-white fas fa-filter btn btn-outline-dark " href="#" id="nav" role="button" data-toggle="dropdown" >
+                  <span  style="font-weight: bold; font-size: 20px; font-family: 'Acme', sans-serif;" >Filter By Category</span>
+                </a>
+                <div class="dropdown-menu scrollable-menu p-sm-3 p-md-3 pt-lg-2" role="menu" id="filterByCategory" >
+                
+                </div>
+              </li>
+
+              <li class=" nav-item dropdown  p-sm-3 p-md-3 pt-lg-2 ">
+                <a class="nav-link dropdown-toggle text-white fas fa-cart-plus btn btn-outline-dark " href="#" id="nav" role="button" data-toggle="dropdown" >
+                </a>
+                <div class="dropdown-menu p-sm-3 p-md-3 pt-lg-2 " >
+                  <a class="dropdown-item text-info bg-white rounded-pill "  id="cartpage" href="cart.html">VIEW</a>
+                </div>
+              </li>
+             
+            </li>
+           
+            </ul>
+             <form class="search-form text-white m-2 p-2  bg-transparent  ">
+                   <input class="form-control Search bg-transparent text-white mr-sm-2" type="text" placeholder="Search... "  >
+             </form>
+           <div> 
+       
+        
+           </div>
+         </nav>
+       </section>
+       <br>
+       <br>
+       <br>
+    	
+	 <section class="ftco-section bg-white rounded-lg m-5 p-2" id="section">
 		<div class="container">
-			<div class="row no-gutters slider-text align-items-center justify-content-center">
-				<div class="col-md-9 ftco-animate text-center">
-					<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="index.html">Product</a></span> <span>Product Single</span></p>
-					<h1 class="mb-0 bread">Product Single</h1>
-				</div>
-			</div>
-		</div>
-	</div>
-     <h2 id="error" class="container-fluid" style="width: 400px; height: 400px; margin-top:100px; text-align: center;"></h2>
-	<section class="ftco-section" id="section">
-		<div class="container">
-			<div class="row">
-               
+			<div class="row lowPrice m-5 p-5">
+                <h2 id="error" class="container-fluid" style="width: 400px; height: 400px; margin-top:100px; text-align: center;"></h2>
 				<div class="col-lg-4 mb-5 ftco-animate">
-					<img src="" id="product-img" class="img-fluid">
+					<h3 class="productInfo font-weight-bold text-center p-3" id="name"></h3>
+					<img  id="product-img" class="img-fluid img-thumbnail p-2 border border-dark">
 				</div>
-				<div class="col-lg-4 product-details pl-md-5 ftco-animate">
-					<h3 id="name"></h3>
-                    
-					<p class="price"><span  style="font-size: 30px;" id="prices"></span></p>
-                    	<span style="color: green;font-size: 15px;">Descrip:</span><p id="description"></p>
-					
-                    
-					
-                    <span style="color: green;font-size: 15px;">Category:</span><p id="Category"></p>
-                    
-                    
-                   
-                    <span style="color: green;font-size: 15px;">SupplierName:</span> <p id="SupplierName"></p>
-                    
-                    <span style="color: green;font-size: 15px;">Weight:</span><p id="WeightMeasure"></p> 
-                     <span style="color: green;font-size: 15px;">Volume:</span><p><span id="Volume"></span><sup>3</sup></p>
-                    </div>
+				<div class="col-lg-4 product-details pl-md-5 ftco-animate generalStyle">
+					    <h5 class="productInfo font-weight-bold mt-3">Price:</h5><p class="price"><span id="prices"></span></p>
+						<h5 class="productInfo font-weight-bold">Description:</h5><p id="description"></p>
+                        <h5 class="productInfo font-weight-bold">Category:</h5><p id="Category"></p>
+                        <h5 class="productInfo font-weight-bold">SupplierName:</h5> <p id="SupplierName"></p>
+                        <h5 class="productInfo font-weight-bold"">Weight:</h5><p id="WeightMeasure"></p> 
+                        <h5 class="productInfo font-weight-bold">Volume:</h5><p><span id="Volume"></span><sup>3</sup></p>
+                </div>
                 <div class="col-lg-4 product-details pl-md-5 ftco-animate">
-                           
-                   
-                 
-                    				<div class="row mt-4">
-						<div class="col-md-6">
-							<div class="form-group d-flex">
-								<div class="select-wrap"></div>
-							</div>
-						</div>
-						<div class="w-100"></div>
-						<div class="input-group col-md-6 d-flex mb-3">
+                    <div class="row mt-4">
+						
+						
+						<div class="input-group btn d-flex mb-3">
 							<span class="input-group-btn mr-2">
-								<button type="button" class="quantity-left-minus btn" data-type="minus" data-field="">
-									<i class="ion-ios-remove"></i>
+								<button type="button" class="quantity-left-minus btn btn-light productInfo " data-type="minus" data-field="">
+									<i class="fas fa-minus"></i>
 								</button>
 							</span>
-							<input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+							<input type="text" id="quantity" name="quantity" class="form-control input-number productInfo" value="1" min="1" max="100">
 							<span class="input-group-btn ml-2">
-								<button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
-									<i class="ion-ios-add"></i>
+								<button type="button" class="quantity-right-plus productInfo btn btn-light" data-type="plus" data-field="">
+									<i class="fas fa-plus"></i>
 								</button>
 							</span>
 						</div>
 						
 					</div>
                     <div style="margin-left: 40px;">
-                     <span style="color: green;font-size: 15px;"> Status:</span><p id="Status"></p> 
-                    
-                     <span style="color: green;font-size: 15px;">Quantity:</span><p id="Quantity"></p>
-                        </div>
+                     <h5 class="productInfo font-weight-bold"> Status:</h5><p id="Status"></p> 
+					 <h5 class="productInfo font-weight-bold"> Quantity:</h5><p id="Quantity"></p>
+					 
+					 <!-- <button type='button' id='addCart' value='"+ProductId+"' class='float-right btn btn-primary border border-dark text-center p-2  '>Add To Cart</button> -->
+                    </div>
 				
                 </div>
 			</div>
 		</div>
 	</section>
 	
-	<footer class="ftco-footer bg-light ftco-section">
-		<div class="container">
-			<div class="row">
-				<div class="mouse">
-					<a href="#" class="mouse-icon">
-						<div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
-					</a>
-				</div>
-			</div>
-			<div class="row mb-5">
-				<div class="col-md-8">
-					<div class="ftco-footer-widget mb-4">
-						
-					</div>
-				</div>
-				<div class="col-md-4">
-					
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 text-center">
-				
-				</div>
-			</div>
-		</div>
-	</footer>
+
 
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
@@ -141,6 +141,12 @@
 			});
 		});
 	</script>
+	 <script src="js/jquery.min.js"></script>
+	 <script src="js/category.js"></script>
+	 <script src="js/Pagination.js"></script>
+	 <script src="js/jquery-3.2.1.min.js"></script>
+	 <script src="js/popper.min.js"></script>
+	 <script src="js/bootstrap.min.js"></script>
 	
 </body>
 </html>
