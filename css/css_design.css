@@ -182,11 +182,11 @@ li a{
 }
 #filterByCategory :hover{
   background-color: gray !important;
-  color: black !important;
+  color: white !important;
 }
 .dropdown-item :hover{
   background-color: gray !important;
-  color: black !important;
+  color: white !important;
 }
 
 .scrollable-menu {
@@ -202,7 +202,7 @@ li a{
 }    
 .scrollable-menu::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: red;
+  background-color: black;
    
 }
 
