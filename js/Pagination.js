@@ -9,6 +9,11 @@ $(function () {
     if (page > 1) {
       page--;
       getAllData();
+      $(".next-btn").show();
+    }else if(page === 1){
+      $(".next-btn").show()
+      $(this).fadeOut(); 
+     
     }
     console.log("prev-page: " + page);
   });
@@ -18,6 +23,11 @@ $(function () {
     if (page * limit < totatItems) {
       page++;
       getAllData();
+      $(".prev-btn").show()
+    }else  if (page === totalPages) {
+      $(".prev-btn").show()
+      $(this).fadeOut();
+      alert("No More Pages")        
     }
     console.log("next-page: " + page);
   });
@@ -54,6 +64,7 @@ $(function () {
         // console.log(result1);
         let result2 = JSON.parse(result1);
         totatItems = result2["total_items"]
+        totalPages =result2["total_pages"]
         //  console.log(totatItems);
 
         if (url) {
@@ -61,6 +72,7 @@ $(function () {
           $("body").append($("#navbar"));
           $("#products").empty();
           $(result2["data"]).each(function (ind, e) {
+            $("#categories").hide();
             //  console.log(result2["data"][ind]);
 
             productName = e.Name;
@@ -72,11 +84,12 @@ $(function () {
             productPic = e.ProductPicUrl;
             productPrice = e.Price;
             productCurrency = e.CurrencyCode;
+            $("#mainProducts").show();
             //  console.log(productName);
             // console.log(productCategory);
 
 
-            //Different Color for each Category
+    //Different Color for each Category
             if (productCategory === 'Printers') {
               $("body").append($("#mainProducts").append($("#products").append("<div class='lowPrice p-5 border border-primary  col-4 text-center'>" + "<span class='p-2 productName border border-primary'><a href='product.html?id="+ProductId+"'>" + productName + "</a></span><br><br>" + "<span class='p-2 border border-primary rounded-pill printersCategory'>" + productCategory + "</span><br><br>" + "<a href='product.html?id="+ProductId+"'><a href='product.html?id="+ProductId+"'><img class='img-fluid img-thumbnail p-2 border border-primary' src=" + productPic + "></a><br><br>" + "<span class='p-1 price'>" + productPrice + "  " + productCurrency + "</span><button type='button' id='addCart' value='"+ProductId+"' class='float-right btn btn-primary border border-dark p-2  '>Add To Cart</button></div><br />")));
             } else if (productCategory === 'Flat Screen Monitors') {
@@ -123,6 +136,7 @@ $(function () {
 
 
           });
+          $("#pagination2").hide();
           $("body").append($("#pagination"));
         }
 
