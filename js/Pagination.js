@@ -51,7 +51,6 @@ $(function () {
   });
 
 
-
   function getAllData() {
 
     $.ajax({
@@ -148,6 +147,7 @@ $(function () {
       }
     });
   }
+
 
     $('#products').on('click', '#addCart', (ev)=>{
     if (!cartArrProId.includes(ev.target.value)) {

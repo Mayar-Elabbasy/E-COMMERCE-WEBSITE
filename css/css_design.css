@@ -180,10 +180,12 @@ li a{
   background-color: gray;
   border-radius: 20px;
 }
+
 #filterByCategory :hover{
   background-color: gray !important;
   color: white !important;
 }
+
 .dropdown-item :hover{
   background-color: gray !important;
   color: white !important;
@@ -209,6 +211,15 @@ li a{
 .active {
   background-color: red;
   border-radius: 20px;
-  color: black;
+}
+
+.productInfo{
+ color: red;
+}
+
+.generalStyle{
+  font-weight: bold;
+  font-size: 20px;
+  font-family: 'Acme', sans-serif;
 }
 
