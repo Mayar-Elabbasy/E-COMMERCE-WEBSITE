@@ -10,7 +10,7 @@ $(function () {
         console.log(result1);
         if (url) {
             result1.forEach(el=>{
-             $("#filterByCategory").append('<a class="dropdown-item text-info bg-white rounded-pill border border-dark" href="#"><span class=" text-info bg-white ">'+el+'</span></a>');
+             $("#filterByCategory").append('<a class="dropdown-item text-dark bg-white rounded-pill border border-dark" href="#"><span class=" text-dark  ">'+el+'</span></a>');
             });
         }
       },
