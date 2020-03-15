@@ -1,41 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Order History</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
-        <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
+        <link rel="stylesheet" href="css/css_design.css"> 
+        <link rel="icon" type="image/ico" href="css/websiteIcon2.png"/>
+        <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css" type="text/css" />
+        <link rel="stylesheet" href="css/about.css" type="text/css" />
         <script src="js/storeOrders.js"></script>
-    </head>
-    <body>
-        <!-- Header Section Begin -->
-        <!-- <header class="header-section">
-        </header> -->
-        <!-- Header End -->
-        
-        <!-- Breadcrumb Section Begin -->
-        <div class="breacrumb-section">
-            <div class="container">
-                <!-- <script >
-                    orderHistory();
-                </script> -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="breadcrumb-text product-more">
-                            <a href="./json.html"><i class="fa fa-shopping-cart"></i> home</a>
-                            <a href="./cart.html"><i class="fa fa-shopping-cart"></i> Cart</a>
-                            <a href="./Orderhistory.html"><i class="fa fa-file-text-o"></i> Orderhistory*</a>
-                            <a href="./contact.html"><i class="fa fa-file-text-o"></i> Contact US</a>
-                            <a href="./aboutus.html"><i class="fa fa-file-text-o"></i> About US</a>
-                        </div>
-                    </div>
+     
+</head>
+<body class="bg-light" >
+    <section id="navbar">
+        <nav class="navbar navbar-inverse navbar-expand-lg navbar-dark fixed-top  rounded-bottom border border-white">
+           <a class="navbar-brand sub m-2  text-white" href="Home_Page.html" >
+            <img src="css/websiteIcon2.png" alt="some text" width=50 height=40> <span>E-COMMERCE WEBSITE</span>
+           </a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" >
+             <span class="navbar-toggler-icon "></span>
+           </button>
+           <div class="collapse navbar-collapse " id="nav">
+            <ul class="navbar-nav mx-auto sub m-2 p-2 ">
+              <li class="nav-item ">
+                  <a  href="Home_Page.html"><i class="fa fa-fw fa-home"></i> Home</a>
+               </li>
+              <li class="nav-item">
+                <a href="aboutus.html" class="text-white "><i class="fas fa-address-card"></i> About</a>
+              </li>
+                <li class="nav-item  ">
+                <a href="contact.html" class="text-white"><i class="fa fa-fw fa-envelope "></i> Contact Us</a>
+              </li>
+              <li class="nav-item  ">
+                <a href="Orderhistory.html" class="text-white active"><i class="fas fa-history"></i> Order History</a>
+              </li>
+              <li class=" nav-item dropdown  p-sm-3 p-md-3 pt-lg-2 ">
+                <a class="nav-link dropdown-toggle text-white fas fa-filter btn btn-outline-dark " href="#" id="nav" role="button" data-toggle="dropdown" >
+                  <span  style="font-weight: bold; font-size: 20px; font-family: 'Acme', sans-serif;" >Filter By Category</span>
+                </a>
+                <div class="dropdown-menu scrollable-menu p-sm-3 p-md-3 pt-lg-2" role="menu" id="filterByCategory" >
+                
                 </div>
-            </div>
-        </div>
-        <!-- <a href="#" id="history" class="proceed-btn">View History</a> -->
-        <!-- Breadcrumb Section Begin -->
+              </li>
+
+              <li class=" nav-item dropdown  p-sm-3 p-md-3 pt-lg-2 ">
+                <a class="nav-link dropdown-toggle text-white fas fa-cart-plus btn btn-outline-dark " href="#" id="nav" role="button" data-toggle="dropdown" >
+                </a>
+                <div class="dropdown-menu p-sm-3 p-md-3 pt-lg-2 " >
+                  <a class="dropdown-item text-info bg-white rounded-pill "  id="cartpage" href="cart.html">VIEW</a>
+                </div>
+              </li>
+             
+            </li>
+           
+            </ul>
+             <form class="search-form text-white m-2 p-2  bg-transparent  ">
+                   <input class="form-control Search bg-transparent text-white mr-sm-2" type="text" placeholder="Search... "  >
+             </form>
+           <div> 
+       
+        
+           </div>
+         </nav>
+       </section>
+       <br/><br/><br/><br/>
         <!-- Shopping Cart Section Begin -->
         <section class="shopping-cart spad">
             <div class="container">
@@ -66,8 +98,10 @@
         <script src="js/jquery-3.3.1.min.js"></script>
         <!-- <script src="js/cartjson.js"></script> -->
         <!-- <script src="js/indexed.js"></script> -->
-        <script>
-        </script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        
 </body>
 
 </html>

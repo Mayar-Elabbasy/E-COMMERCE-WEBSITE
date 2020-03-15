@@ -58,7 +58,7 @@ $(function () {
         getAllProductPrice();
     });
     function getAllProductPrice() {
-        console.log(allProductPrice);
+        // console.log(allProductPrice);
         total=0;
         allProductPrice.forEach(el=>{
             total=total+el;
@@ -108,9 +108,8 @@ $(function () {
         // window.location=window.location;},3000);
         $.ajax({
             url: 'cart.html',
-            type: "GET",
             success: function (result) {
-                // location.reload(false);
+                location.reload(false);
             },
             error: function () {
                 console.log("error");

@@ -15,7 +15,7 @@ $(function () {
       $(this).fadeOut(); 
      
     }
-    console.log("prev-page: " + page);
+    // console.log("prev-page: " + page);
   });
 
   $(".next-btn").on("click", function () {
@@ -29,7 +29,7 @@ $(function () {
       $(this).fadeOut();
       alert("No More Pages")        
     }
-    console.log("next-page: " + page);
+    // console.log("next-page: " + page);
   });
 
   $(".paginationColor").mouseenter(function () {
@@ -59,7 +59,7 @@ $(function () {
       type: "GET",
       success: function (url) {
         //  console.log(url);
-        console.log("hello from success");
+        // console.log("hello from success");
         let result1 = JSON.stringify(url);
         // console.log(result1);
         let result2 = JSON.parse(result1);
@@ -144,7 +144,7 @@ $(function () {
       error: function () {
 
         alert("No more pages");
-        console.log("hello from error");
+        // console.log("hello from error");
       }
     });
   }
