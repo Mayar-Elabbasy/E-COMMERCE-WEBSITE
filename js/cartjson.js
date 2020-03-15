@@ -58,7 +58,7 @@ $(function () {
                         "<span class='inc qtybtn'>+</span>"+
                     "</div>" +
                 "<td class='total-price first-row'>" + currencyCode + totalPrice + "</td>" +
-                "<td class='delButton' value='"+ element['ProductId']+"'>X</td>" +
+                "<td ><button class='delButton btn btn-danger first-row' value='"+ element['ProductId']+"'>X</button></td>" +
                 "</tr>"
             );
         });
@@ -107,7 +107,7 @@ $(function () {
     });
     /*-------------------SaveButton-----------------------------------*/
     $("#save").click((ev) => {
-        // getAllProductPrice();
+        getAllProductPrice();
         StoreDate(allItmes);
     });
     // /*-------------------OrderHistoryButton---------------------------*/
