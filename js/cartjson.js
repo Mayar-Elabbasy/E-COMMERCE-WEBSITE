@@ -1,15 +1,9 @@
 $(function () {
-    $(window).on('load', function () {
-        $(".loader").fadeOut();
-        $("#preloder").delay(200).fadeOut("slow");
-    });
     var ProductId = JSON.parse(sessionStorage.getItem("productsId")); 
-    // console.log(ProductId);
     var i;
     var allItmes=[];
     var allProductPrice=[];
     let CurrencyCode = "\u20AC";
-    // sessionStorage.setItem("allProductPrice",0);
     let len=ProductId.length;
     for (i = 0; i <len; i++) {
         if (ProductId[i] == null) {
@@ -29,10 +23,6 @@ $(function () {
             element = data.data;
             quantity = parseInt(sessionStorage.getItem(element['ProductId']));
             totalPrice = element['Price'] * quantity;
-            // getAllProductPrice(totalPrice);
-            // sessionStorage.setItem("allProductPrice",(totalPrice+parseInt(sessionStorage.getItem("allProductPrice"))));
-            // getAllProductPrice(totalPrice);
-
             // ArrayToCollectAllTotalPrice
             allProductPrice.push(totalPrice);
             currencyCode = element['CurrencyCode']
@@ -44,7 +34,6 @@ $(function () {
             allItmes.push(element['Name']);
             allItmes.push(quantity);
             allItmes.push(totalPrice);
-            // allItmes.push("/");
             // EndArray
             $("tbody").append(
                 "<tr>" +
@@ -65,14 +54,16 @@ $(function () {
     }
 
     /*-------------------GetAllProductPriceFunction---------- */
-    // getAllProductPrice();
-    // THis function need  an event to action(save button untill solve it )
+    $("#getAllProductPrice").click((ev) => {
+        getAllProductPrice();
+    });
     function getAllProductPrice() {
         console.log(allProductPrice);
         total=0;
         allProductPrice.forEach(el=>{
             total=total+el;
         });
+        $(".cart-total").empty();
         $(".cart-total").append("Total <span>"+CurrencyCode+" "+total+"</span>");        
     }
     /*-------------------Quantity change--------------------- */
@@ -105,27 +96,21 @@ $(function () {
         window.sessionStorage.setItem("productsId", JSON.stringify(ProductId));
         reloadFun();
     });
+
     /*-------------------SaveButton-----------------------------------*/
     $("#save").click((ev) => {
-        getAllProductPrice();
+        // getAllProductPrice();
         StoreDate(allItmes);
     });
-    // /*-------------------OrderHistoryButton---------------------------*/
-    // $("#history").click((ev) => {
-    //     orderHistory();
-    // });
-    // /*-------------------DeleteOrderHistoryButton---------------------*/
-    // $("#delhistory").click((ev) => {
-    //     delAllOrderHistory();
-    // });
     /*-------------------FUnctionToReloadPage------------------------*/
     function reloadFun(){
          // setTimeout(function() { console.log("reload");
         // window.location=window.location;},3000);
         $.ajax({
-            url: '',
+            url: 'cart.html',
+            type: "GET",
             success: function (result) {
-                location.reload(false);
+                // location.reload(false);
             },
             error: function () {
                 console.log("error");
