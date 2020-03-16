@@ -44,6 +44,7 @@ $(function () {
         });
     }
     });
+    
     setInterval(function() {  
         $("#num").empty();
         if (sessionStorage.getItem("productsId")) {

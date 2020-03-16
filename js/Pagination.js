@@ -137,7 +137,10 @@ $(function () {
   }
 
 
-    $('#products').on('click', '#addCart', (ev)=>{     
+    $('#products').on('click', '#addCart', (ev)=>{   
+      if (sessionStorage.getItem("productsId")) {
+        cartArrProId=JSON.parse(sessionStorage.getItem("productsId")); 
+}  
     if (!cartArrProId.includes(ev.target.value)) {
       cartArrProId.unshift(ev.target.value);
     } else {
@@ -152,6 +155,7 @@ $(function () {
   });
   
   $("#cartpage").click((ev) => {
+    window.sessionStorage.setItem("productsId", JSON.stringify(cartArrProId));
   });
 
   setInterval(function() {  

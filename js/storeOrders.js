@@ -55,6 +55,7 @@ function StoreDate(allItmes){
             TotalNoOfItems:totalItems,
         });
     }
+    sessionStorage.clear();
 }
 // /***************************** */
 openDb();
