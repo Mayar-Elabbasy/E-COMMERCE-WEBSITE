@@ -5,6 +5,8 @@ $(function () {
     totatItems = 0;
     getAllData();
 
+
+
   $(".prev-btn").on("click", function () {
     if (page > 1) {
       page--;
@@ -15,7 +17,6 @@ $(function () {
       $(this).fadeOut(); 
      
     }
-    // console.log("prev-page: " + page);
   });
 
   $(".next-btn").on("click", function () {
@@ -29,7 +30,6 @@ $(function () {
       $(this).fadeOut();
       alert("No More Pages")        
     }
-    // console.log("next-page: " + page);
   });
 
   $(".paginationColor").mouseenter(function () {
@@ -57,14 +57,10 @@ $(function () {
       url: "https://afternoon-falls-30227.herokuapp.com/api/v1/products/?page=" + page,
       type: "GET",
       success: function (url) {
-        //  console.log(url);
-        // console.log("hello from success");
         let result1 = JSON.stringify(url);
-        // console.log(result1);
         let result2 = JSON.parse(result1);
         totatItems = result2["total_items"]
         totalPages =result2["total_pages"]
-        //  console.log(totatItems);
 
         if (url) {
 
@@ -72,11 +68,9 @@ $(function () {
           $("#products").empty();
           $(result2["data"]).each(function (ind, e) {
             $("#categories").hide();
-            //  console.log(result2["data"][ind]);
 
             productName = e.Name;
             ProductId=e.ProductId;
-            // console.log(ProductId);
             
 
             productCategory = e.Category;
@@ -84,8 +78,7 @@ $(function () {
             productPrice = e.Price;
             productCurrency = e.CurrencyCode;
             $("#mainProducts").show();
-            //  console.log(productName);
-            // console.log(productCategory);
+  
 
 
     //Different Color for each Category
@@ -141,30 +134,47 @@ $(function () {
 
       },
       error: function () {
-
         alert("No more pages");
-        // console.log("hello from error");
       }
     });
   }
 
 
     $('#products').on('click', '#addCart', (ev)=>{
+        if (sessionStorage.getItem("productsId")) {
+          cartArrProId=JSON.parse(sessionStorage.getItem("productsId")); 
+}
+      
     if (!cartArrProId.includes(ev.target.value)) {
       cartArrProId.unshift(ev.target.value);
     } else {
       let len = cartArrProId.length;
       for (var i = 0; i < len; i++) {
-        if (cartArrProId[i] === ev.target.value) { cartArrProId.splice(i, 1); }
+        if (cartArrProId[i] === ev.target.value) { 
+          cartArrProId.splice(i, 1);
+          if (sessionStorage.getItem(ev.target.value)) {
+	sessionStorage.removeItem(ev.target.value);
+}
+        }
       }
     }
+    window.sessionStorage.setItem("productsId", JSON.stringify(cartArrProId));
+   
+    // reloadFun();
   });
   
   $("#cartpage").click((ev) => {
-    window.sessionStorage.setItem("productsId", JSON.stringify(cartArrProId));
-
   });
 
+  setInterval(function() {  
+    $("#num").empty();
+    if (sessionStorage.getItem("productsId")) {
+        $("#num").append(JSON.parse(sessionStorage.getItem("productsId")).length);
+    }else{
+        $("#num").append(0);
+
+    }
+  },1000);
+
+
 });
-
-

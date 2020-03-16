@@ -4,7 +4,13 @@ $(function () {
     var allItmes=[];
     var allProductPrice=[];
     let CurrencyCode = "\u20AC";
-    let len=ProductId.length;
+    let len;
+    if (ProductId==null) {
+		len=0;
+	}else{
+
+        len=ProductId.length;
+    }
     for (i = 0; i <len; i++) {
         if (ProductId[i] == null) {
             continue;
@@ -58,7 +64,6 @@ $(function () {
         getAllProductPrice();
     });
     function getAllProductPrice() {
-        // console.log(allProductPrice);
         total=0;
         allProductPrice.forEach(el=>{
             total=total+el;
@@ -87,11 +92,15 @@ $(function () {
     });
     /*-------------------DeleteButton--------------------- */
     $('tbody').on('click', '.delButton', (ev) => {
-        // console.log(ev.target.attributes.value["value"]);
         delProductId=ev.target.attributes.value["value"];
         for( var i = 0; i < len; i++)
         {  { if ( ProductId[i] === delProductId) 
-            { ProductId.splice(i, 1); }
+            { 
+                ProductId.splice(i, 1); 
+                if (sessionStorage.getItem(delProductId)) {
+                    sessionStorage.removeItem(delProductId);
+                }
+            }
         }}
         window.sessionStorage.setItem("productsId", JSON.stringify(ProductId));
         reloadFun();
@@ -99,22 +108,32 @@ $(function () {
 
     /*-------------------SaveButton-----------------------------------*/
     $("#save").click((ev) => {
-        // getAllProductPrice();
         StoreDate(allItmes);
+        
+        sessionStorage.clear();
     });
     /*-------------------FUnctionToReloadPage------------------------*/
     function reloadFun(){
          // setTimeout(function() { console.log("reload");
         // window.location=window.location;},3000);
         $.ajax({
-            url: 'cart.html',
+            url: '',
             success: function (result) {
                 location.reload(false);
             },
             error: function () {
-                console.log("error");
+                alert("ERROR InterNet");
 
             }
         });
     }
+    setInterval(function() {  
+        $("#num").empty();
+        if (sessionStorage.getItem("productsId")) {
+            $("#num").append(JSON.parse(sessionStorage.getItem("productsId")).length);
+        }else{
+            $("#num").append(0);
+
+        }
+      },1000);
 });

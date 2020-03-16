@@ -1,9 +1,9 @@
 
 var x = new URLSearchParams(window.location.search); 
-console.log(x);
+var  cartArrProId=[];
 
 var queryString = x.get('id');
-console.log(queryString);
+
 
 var url = 'https://afternoon-falls-30227.herokuapp.com/api/v1/products/' + queryString;
 var xmlhttp = new XMLHttpRequest();
@@ -23,7 +23,6 @@ xmlhttp.onerror = function () {
 };
 xmlhttp.send();
 function myFunction(arr) {
-	    console.log(arr);
 		var obj = arr.data;
         var category = obj.Category;
 		document.getElementById("Category").innerHTML = category;
@@ -57,3 +56,34 @@ function myFunction(arr) {
 		//$("#error").hide();
 		  document.getElementById("error").style.display = "none";
   }
+//   CartButton
+  $('#addCart').click( (ev)=>{
+	  cartArrProId=JSON.parse(sessionStorage.getItem("productsId")); 
+	if (!cartArrProId.includes(queryString)) {
+      cartArrProId.unshift(queryString);
+    } else {
+      let len = cartArrProId.length;
+      for (var i = 0; i < len; i++) {
+        if (cartArrProId[i] === queryString) { 
+			cartArrProId.splice(i, 1); 
+			  if (sessionStorage.getItem(queryString)) {
+				sessionStorage.removeItem(queryString);
+}
+
+		}
+	}
+}
+window.sessionStorage.setItem("productsId", JSON.stringify(cartArrProId));
+
+});
+setInterval(function() {  
+	$("#num").empty();
+	if (sessionStorage.getItem("productsId")) {
+		$("#num").append(JSON.parse(sessionStorage.getItem("productsId")).length);
+	}else{
+		$("#num").append(0);
+
+	}
+  },1000);
+
+

@@ -48,6 +48,7 @@
 
               <li class=" nav-item dropdown  p-sm-3 p-md-3 pt-lg-2 ">
                 <a class="nav-link dropdown-toggle text-white fas fa-cart-plus btn btn-outline-dark " href="#" id="nav" role="button" data-toggle="dropdown" >
+                    <span id="num"></span>
                 </a>
                 <div class="dropdown-menu p-sm-3 p-md-3 pt-lg-2 " >
                   <a class="dropdown-item text-info bg-white rounded-pill "  id="cartpage" href="cart.html">VIEW</a>
@@ -180,7 +181,17 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+<script>
+    setInterval(function() {  
+        $("#num").empty();
+        if (sessionStorage.getItem("productsId")) {
+            $("#num").append(JSON.parse(sessionStorage.getItem("productsId")).length);
+        }else{
+            $("#num").append(0);
 
+        }
+      },1000);
+</script>
 </body>
 
 </html>

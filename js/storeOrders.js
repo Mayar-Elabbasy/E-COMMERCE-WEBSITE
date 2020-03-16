@@ -5,14 +5,12 @@ var db;
 let dateFormate = { year: 'numeric', month: 'long', day: 'numeric' };
 let orderDate  = new Date();
 // here  to use i in different places
-window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 if ('indexedDB' in window) {
     indexDB();
 }
 function indexDB() {
     const request = indexedDB.open(DB_NAME, DB_VERSION);
     request.onupgradeneeded = function (ev) {
-        console.log("upgrade");
         
          db = ev.target.result;
         let createTable = db.createObjectStore(DB_TABLE_Name,{
@@ -27,12 +25,11 @@ function indexDB() {
         const tran = store.objectStore(DB_TABLE_Name);
     };
     request.onerror = function (ev) {
-        console.log("ERROR IN(INDEXDB)YOUR DATA NOT SAVED", ev.target.errorCode);
+        alert("ERROR IN(INDEXDB)YOUR DATA NOT SAVED", ev.target.errorCode);
 
     };
 }
 function StoreDate(allItmes){
-   // console.log("items");
     itemsInOne=[];
     len=allItmes.length;
     let i;
@@ -41,15 +38,12 @@ function StoreDate(allItmes){
     let totalItems=0;
     for(i=0;i<len;i=i+3){
       Str=+" "+allItmes[i]+" : "+allItmes[i+1]+" item : "+allItmes[i+2]+"$";
-      //console.log(Str);
       totalPr+=allItmes[i+2];
       totalItems+=allItmes[i+1];
       itemsInOne[j]=Str;
-    //  console.log(itemsInOne[j]);
       j++;
     }
     desc=itemsInOne.toString();
-    //console.log(desc);
     if (db instanceof IDBDatabase) {
         const store = db.transaction(DB_TABLE_Name, 'readwrite');
         const tran = store.objectStore(DB_TABLE_Name);
@@ -65,8 +59,6 @@ function StoreDate(allItmes){
 // /***************************** */
 openDb();
 function openDb(){
-    console.log("opened");
-    
     const request = indexedDB.open(DB_NAME, DB_VERSION);
     request.onsuccess = function (ev) {
         db = ev.target.result;
@@ -76,7 +68,6 @@ function openDb(){
 }
 setTimeout(function orderHistory() {
     if (db instanceof IDBDatabase) {
-        console.log("orderHistory");
         const store = db.transaction(DB_TABLE_Name, 'readwrite');
         const tran = store.objectStore(DB_TABLE_Name)
         tran.getAll().onsuccess = (ev) => {
@@ -118,3 +109,12 @@ function delAllOrderHistory(){
     }
 
 }
+setInterval(function() {  
+    $("#num").empty();
+    if (sessionStorage.getItem("productsId")) {
+        $("#num").append(JSON.parse(sessionStorage.getItem("productsId")).length);
+    }else{
+        $("#num").append(0);
+
+    }
+  },1000);

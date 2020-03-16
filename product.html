@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-COMMERCE WEBSITE</title>
+    <title>Product</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
@@ -46,6 +46,7 @@
 
               <li class=" nav-item dropdown  p-sm-3 p-md-3 pt-lg-2 ">
                 <a class="nav-link dropdown-toggle text-white fas fa-cart-plus btn btn-outline-dark " href="#" id="nav" role="button" data-toggle="dropdown" >
+                  <span id="num"></span>
                 </a>
                 <div class="dropdown-menu p-sm-3 p-md-3 pt-lg-2 " >
                   <a class="dropdown-item text-info bg-white rounded-pill "  id="cartpage" href="cart.html">VIEW</a>
@@ -88,7 +89,7 @@
                     <div class="row mt-4">
 						
 						
-						<div class="input-group btn d-flex mb-3">
+						<!-- <div class="input-group btn d-flex mb-3">
 							<span class="input-group-btn mr-2">
 								<button type="button" class="quantity-left-minus btn btn-light productInfo " data-type="minus" data-field="">
 									<i class="fas fa-minus"></i>
@@ -100,21 +101,22 @@
 									<i class="fas fa-plus"></i>
 								</button>
 							</span>
-						</div>
+						</div> -->
 						
 					</div>
                     <div style="margin-left: 40px;">
                      <h5 class="productInfo font-weight-bold"> Status:</h5><p id="Status"></p> 
 					 <h5 class="productInfo font-weight-bold"> Quantity:</h5><p id="Quantity"></p>
-					 
-					 <!-- <button type='button' id='addCart' value='"+ProductId+"' class='float-right btn btn-primary border border-dark text-center p-2  '>Add To Cart</button> -->
+					 <button type='button' id='addCart'  class='float-right btn btn-primary border border-dark text-center p-2  '>Add To Cart</button>
                     </div>
 				
                 </div>
 			</div>
 		</div>
 	</section>
-	
+	<script>
+    
+  </script>
 
 
 	<!-- loader -->
@@ -122,31 +124,14 @@
 	
 	</div>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="product.js"></script>
-	<script>
-		$(document).ready(function() {
-			var quantitiy = 0;
-			$('.quantity-right-plus').click(function(e) {
-				e.preventDefault();
-				var quantity = parseInt($('#quantity').val());
-				$('#quantity').val(quantity + 1);
-			});
-			$('.quantity-left-minus').click(function(e) {
-				e.preventDefault();
-				var quantity = parseInt($('#quantity').val());
-				if (quantity > 0) {
-					$('#quantity').val(quantity - 1);
-				}
-			});
-		});
-	</script>
-	 <script src="js/jquery.min.js"></script>
-	 <script src="js/category.js"></script>
-	 <script src="js/Pagination.js"></script>
-	 <script src="js/jquery-3.2.1.min.js"></script>
-	 <script src="js/popper.min.js"></script>
-	 <script src="js/bootstrap.min.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+  <script src="js/jquery.min.js"></script>
+  <!-- <script src="js/category.js"></script> -->
+  <!-- <script src="js/Pagination.js"></script> -->
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="product.js"></script>
 	
 </body>
 </html>

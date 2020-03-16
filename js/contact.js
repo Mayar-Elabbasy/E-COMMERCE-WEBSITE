@@ -1,4 +1,5 @@
 $(function () {
+
     let url='https://afternoon-falls-30227.herokuapp.com/api/v1/contact_us';
     $("#submit").click(function () {
         let name=$("#name").val();
@@ -6,24 +7,23 @@ $(function () {
         let subject=$("#subject").val();
         let message=$("#message").val();
 
-        console.log("name"+name+"email"+email+"subject"+subject+"message"+message);
-        // console.log(email.trim().match(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/));
+
         
-        if(name.trim() == ''){
+        if(name.trim() == '' || name.length < 3){
             $("#VaildMessage").removeClass().empty();
             $('#VaildMessage').addClass("alert alert-danger").append("<strong>name*</strong>  From 3 to 50 charachters.");
         }
-        else if(subject.trim() == ''){
-            $("#VaildMessage").removeClass().empty();
-            $('#VaildMessage').addClass("alert alert-danger").append("<strong>subject*</strong>");
-        }
         else if(email.trim().match(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/) == null) {
             $("#VaildMessage").removeClass().empty();
-            $('#VaildMessage').addClass("alert alert-danger").append("<strong>email*</strong>");
+            $('#VaildMessage').addClass("alert alert-danger").append("<strong>email* NOTVaildFormate admin@admin.com</strong>");
         }
+        else if(subject.trim() == ''){
+            $("#VaildMessage").removeClass().empty();
+                $('#VaildMessage').addClass("alert alert-danger").append("<strong>subject* Is REQUIRED</strong>");
+                        }
         else if(message.trim() == ''){
             $("#VaildMessage").removeClass().empty();
-            $('#VaildMessage').addClass("alert alert-danger").append("<strong>message*</strong>");
+            $('#VaildMessage').addClass("alert alert-danger").append("<strong>message* Is REQUIRED</strong>");
         }
         else{
         $.ajax({
@@ -44,6 +44,15 @@ $(function () {
         });
     }
     });
+    setInterval(function() {  
+        $("#num").empty();
+        if (sessionStorage.getItem("productsId")) {
+            $("#num").append(JSON.parse(sessionStorage.getItem("productsId")).length);
+        }else{
+            $("#num").append(0);
+
+        }
+      },1000);
 
 });
 
