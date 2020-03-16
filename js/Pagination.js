@@ -1,5 +1,5 @@
 $(function () {
-  let  cartArrProId=[];
+  var  cartArrProId=[];
   var page = 1,
     limit = 10,
     totatItems = 0;
@@ -125,13 +125,10 @@ $(function () {
             }else if (productCategory === 'Flat Screens') {
               $("body").append($("#mainProducts").append($("#products").append("<div class='lowPrice p-5  border border-primary col-4 text-center'>" + "<span class='p-2 productName border border-primary'><a href='product.html?id="+ProductId+"'>" + productName + "</a></span><br><br>" + "<span class='p-2 border border-primary rounded-pill  flatScreensCategory'>" + productCategory + "</span><br><br>" + "<a href='product.html?id="+ProductId+"'><img class='img-fluid  img-thumbnail p-2 border border-primary 'src="  + productPic + "></a><br><br>" + "<span class='p-2'>" + productPrice + "  " + productCurrency + "</span><button type='button' id='addCart' value='"+ProductId+"' class='float-right btn btn-primary p-2 border border-dark'>Add To Cart</button></div><br />")));
             }
-
-
           });
           $("#pagination2").hide();
           $("body").append($("#pagination"));
         }
-
       },
       error: function () {
         alert("No more pages");
@@ -140,11 +137,7 @@ $(function () {
   }
 
 
-    $('#products').on('click', '#addCart', (ev)=>{
-        if (sessionStorage.getItem("productsId")) {
-          cartArrProId=JSON.parse(sessionStorage.getItem("productsId")); 
-}
-      
+    $('#products').on('click', '#addCart', (ev)=>{     
     if (!cartArrProId.includes(ev.target.value)) {
       cartArrProId.unshift(ev.target.value);
     } else {
@@ -152,15 +145,10 @@ $(function () {
       for (var i = 0; i < len; i++) {
         if (cartArrProId[i] === ev.target.value) { 
           cartArrProId.splice(i, 1);
-          if (sessionStorage.getItem(ev.target.value)) {
-	sessionStorage.removeItem(ev.target.value);
-}
         }
       }
     }
     window.sessionStorage.setItem("productsId", JSON.stringify(cartArrProId));
-   
-    // reloadFun();
   });
   
   $("#cartpage").click((ev) => {

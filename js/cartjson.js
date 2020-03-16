@@ -109,8 +109,7 @@ $(function () {
     /*-------------------SaveButton-----------------------------------*/
     $("#save").click((ev) => {
         StoreDate(allItmes);
-        
-        sessionStorage.clear();
+        // sessionStorage.clear();
     });
     /*-------------------FUnctionToReloadPage------------------------*/
     function reloadFun(){
@@ -122,8 +121,8 @@ $(function () {
                 location.reload(false);
             },
             error: function () {
-                alert("ERROR InterNet");
-
+                console.log("ERROR InterNet");
+                
             }
         });
     }

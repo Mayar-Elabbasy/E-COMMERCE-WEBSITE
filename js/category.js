@@ -1,5 +1,5 @@
 $(function () {
-  let  cartArrProId=[];
+  // let  cartArrProId=[];
   
     $.ajax({
       url: "https://afternoon-falls-30227.herokuapp.com/api/v1/products-stats/",
@@ -172,21 +172,32 @@ $(function () {
         }
       });
 
-          $('#categories').on('click', '#addCart', (ev)=>{
-          if (!cartArrProId.includes(ev.target.value)) {
-            cartArrProId.unshift(ev.target.value);
-          } else {
-            let len = cartArrProId.length;
-            for (var i = 0; i < len; i++) {
-              if (cartArrProId[i] === ev.target.value) { cartArrProId.splice(i, 1); }
+      $('#products').on('click', '#addCart', (ev)=>{     
+        if (!cartArrProId.includes(ev.target.value)) {
+          cartArrProId.unshift(ev.target.value);
+        } else {
+          let len = cartArrProId.length;
+          for (var i = 0; i < len; i++) {
+            if (cartArrProId[i] === ev.target.value) { 
+              cartArrProId.splice(i, 1);
             }
           }
-        });
-        
-        $("#cartpage").click((ev) => {
-          window.sessionStorage.setItem("productsId", JSON.stringify(cartArrProId));
-
-        });
+        }
+        window.sessionStorage.setItem("productsId", JSON.stringify(cartArrProId));
+      });
+      
+      $("#cartpage").click((ev) => {
+      });
+    
+      setInterval(function() {  
+        $("#num").empty();
+        if (sessionStorage.getItem("productsId")) {
+            $("#num").append(JSON.parse(sessionStorage.getItem("productsId")).length);
+        }else{
+            $("#num").append(0);
+    
+        }
+      },1000);
 
       });
 
